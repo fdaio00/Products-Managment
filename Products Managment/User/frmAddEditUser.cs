@@ -74,7 +74,7 @@ namespace Products_Managment.User
             txtName.Text = _User.Name;
             txtUserName.Text = _User.UserName;
             txtPassword.Text = _User.Password;
-            txtConfitmPassword.Text = _User.Name;
+            txtConfitmPassword.Text = _User.Password;
             if(_User.IsManager)
             {
                 cbIsManager.SelectedIndex = 1;
@@ -134,7 +134,15 @@ namespace Products_Managment.User
                 errorProvider1.SetError(txtUserName, "يجب عليك ملء هذه الخانة");
 
             }
-            else if(clsUser.)
+            else if(clsUser.IsUserExist(txtUserName.Text.Trim()))
+                {
+                e.Cancel = true;
+                errorProvider1.SetError(txtUserName, "يوجد بالفعل مستخدم بهذا الاسم");
+
+            }
+            else
+                errorProvider1.SetError(txtUserName, null);
+
         }
     }
 }

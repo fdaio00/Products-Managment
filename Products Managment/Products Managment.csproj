@@ -91,6 +91,12 @@
     <Compile Include="frmEmployees.Designer.cs">
       <DependentUpon>frmEmployees.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRestoreDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRestoreDB.Designer.cs">
+      <DependentUpon>frmRestoreDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrderDetails\frmPrintOrderDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmployees.resx">
       <DependentUpon>frmEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRestoreDB.resx">
+      <DependentUpon>frmRestoreDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderDetails\frmPrintOrderDetails.resx">
       <DependentUpon>frmPrintOrderDetails.cs</DependentUpon>

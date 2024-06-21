@@ -56,8 +56,8 @@ namespace Products_Managment
         private void frmManageProducts_Load(object sender, EventArgs e)
         {
             txtSearch.Focus();
-            cbFilter.SelectedIndex = 1;
             _dtAllProducts = clsProduct.GetAllProducts();
+            
             dgvListProducts.DataSource = _dtAllProducts;
 
             //if(dgvListProducts.Rows.Count>0)

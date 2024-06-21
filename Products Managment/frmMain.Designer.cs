@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.ملفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تسجيلالدخولToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.انشاءنسخةاحتياطيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,9 +53,6 @@
             this.المتسخدمينToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إضافةمستخدمجديدToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إدارةالمستخدمينToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +71,31 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Window;
+            this.label1.Location = new System.Drawing.Point(703, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 16);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "المستخدم: ";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.BackColor = System.Drawing.SystemColors.Window;
+            this.lblName.Location = new System.Drawing.Point(765, 12);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(38, 16);
+            this.lblName.TabIndex = 4;
+            this.lblName.Text = "hggg";
             // 
             // ملفToolStripMenuItem
             // 
@@ -101,6 +126,7 @@
             this.انشاءنسخةاحتياطيةToolStripMenuItem.Name = "انشاءنسخةاحتياطيةToolStripMenuItem";
             this.انشاءنسخةاحتياطيةToolStripMenuItem.Size = new System.Drawing.Size(253, 38);
             this.انشاءنسخةاحتياطيةToolStripMenuItem.Text = "انشاء نسخة احتياطية";
+            this.انشاءنسخةاحتياطيةToolStripMenuItem.Click += new System.EventHandler(this.انشاءنسخةاحتياطيةToolStripMenuItem_Click);
             // 
             // استعادةنسخةمحفوظةToolStripMenuItem
             // 
@@ -109,6 +135,7 @@
             this.استعادةنسخةمحفوظةToolStripMenuItem.Name = "استعادةنسخةمحفوظةToolStripMenuItem";
             this.استعادةنسخةمحفوظةToolStripMenuItem.Size = new System.Drawing.Size(253, 38);
             this.استعادةنسخةمحفوظةToolStripMenuItem.Text = "استعادة نسخة محفوظة";
+            this.استعادةنسخةمحفوظةToolStripMenuItem.Click += new System.EventHandler(this.استعادةنسخةمحفوظةToolStripMenuItem_Click);
             // 
             // تسجلالخروجToolStripMenuItem
             // 
@@ -137,7 +164,7 @@
             this.إضافةمنتججديدToolStripMenuItem.Image = global::Products_Managment.Properties.Resources.add;
             this.إضافةمنتججديدToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.إضافةمنتججديدToolStripMenuItem.Name = "إضافةمنتججديدToolStripMenuItem";
-            this.إضافةمنتججديدToolStripMenuItem.Size = new System.Drawing.Size(209, 38);
+            this.إضافةمنتججديدToolStripMenuItem.Size = new System.Drawing.Size(236, 38);
             this.إضافةمنتججديدToolStripMenuItem.Text = "إضافة منتج جديد";
             this.إضافةمنتججديدToolStripMenuItem.Click += new System.EventHandler(this.إضافةمنتججديدToolStripMenuItem_Click);
             // 
@@ -146,19 +173,19 @@
             this.إدارةالمنتجاتToolStripMenuItem.Image = global::Products_Managment.Properties.Resources.list1;
             this.إدارةالمنتجاتToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.إدارةالمنتجاتToolStripMenuItem.Name = "إدارةالمنتجاتToolStripMenuItem";
-            this.إدارةالمنتجاتToolStripMenuItem.Size = new System.Drawing.Size(209, 38);
+            this.إدارةالمنتجاتToolStripMenuItem.Size = new System.Drawing.Size(236, 38);
             this.إدارةالمنتجاتToolStripMenuItem.Text = "إدارة المنتجات";
             this.إدارةالمنتجاتToolStripMenuItem.Click += new System.EventHandler(this.إدارةالمنتجاتToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(206, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(233, 6);
             // 
             // إدارةالأصنافToolStripMenuItem
             // 
             this.إدارةالأصنافToolStripMenuItem.Name = "إدارةالأصنافToolStripMenuItem";
-            this.إدارةالأصنافToolStripMenuItem.Size = new System.Drawing.Size(209, 38);
+            this.إدارةالأصنافToolStripMenuItem.Size = new System.Drawing.Size(236, 38);
             this.إدارةالأصنافToolStripMenuItem.Text = "إدارة الأصناف";
             this.إدارةالأصنافToolStripMenuItem.Click += new System.EventHandler(this.إدارةالأصنافToolStripMenuItem_Click);
             // 
@@ -222,41 +249,16 @@
             // إضافةمستخدمجديدToolStripMenuItem
             // 
             this.إضافةمستخدمجديدToolStripMenuItem.Name = "إضافةمستخدمجديدToolStripMenuItem";
-            this.إضافةمستخدمجديدToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.إضافةمستخدمجديدToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
             this.إضافةمستخدمجديدToolStripMenuItem.Text = "إضافة مستخدم جديد";
             this.إضافةمستخدمجديدToolStripMenuItem.Click += new System.EventHandler(this.إضافةمستخدمجديدToolStripMenuItem_Click);
             // 
             // إدارةالمستخدمينToolStripMenuItem
             // 
             this.إدارةالمستخدمينToolStripMenuItem.Name = "إدارةالمستخدمينToolStripMenuItem";
-            this.إدارةالمستخدمينToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.إدارةالمستخدمينToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
             this.إدارةالمستخدمينToolStripMenuItem.Text = "إدارة المستخدمين";
             this.إدارةالمستخدمينToolStripMenuItem.Click += new System.EventHandler(this.إدارةالمستخدمينToolStripMenuItem_Click);
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(703, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "المستخدم: ";
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.BackColor = System.Drawing.SystemColors.Window;
-            this.lblName.Location = new System.Drawing.Point(765, 12);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(38, 16);
-            this.lblName.TabIndex = 4;
-            this.lblName.Text = "hggg";
             // 
             // frmMain
             // 

@@ -179,5 +179,16 @@ namespace Products_Managment
             frmListUsers frm = new frmListUsers();
             frm.ShowDialog(); 
         }
+
+        private void انشاءنسخةاحتياطيةToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void استعادةنسخةمحفوظةToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRestoreDB frm = new frmRestoreDB();
+            frm.ShowDialog(); 
+        }
     }
 }

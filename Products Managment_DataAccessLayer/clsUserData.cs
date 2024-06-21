@@ -294,73 +294,84 @@ namespace Products_Managment_DataAccessLayer
 
         }
 
-        public static bool IsUserExist(int UserID)
-        {
-            bool isFound = false;
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT Found=1 FROM Users WHERE UserID = @UserID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@UserID", UserID);
-
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                isFound = reader.HasRows;
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error: " + ex.Message);
-                isFound = false;
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return isFound;
-        }
 
         public static bool IsUserExist(string UserName)
         {
-            bool isFound = false;
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT Found=1 FROM Users WHERE UserName = @UserName";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@UserName", UserName);
+            int? resutl = 0;
 
             try
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
 
-                isFound = reader.HasRows;
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("SP_CheckUserExists", connection))
+                    {
 
-                reader.Close();
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@UserName", (object)UserName ?? DBNull.Value);
+
+                        SqlParameter returnValue = new SqlParameter("@ReturnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.ReturnValue
+                        };
+
+                        command.Parameters.Add(returnValue);
+
+                        command.ExecuteNonQuery();
+                        resutl = (int)returnValue.Value;
+                    }
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //Console.WriteLine("Error: " + ex.Message);
-                isFound = false;
-            }
-            finally
-            {
-                connection.Close();
+
+                throw;
             }
 
-            return isFound;
+            return (resutl > 0);
         }
+    
+
+        public static bool IsUserExist(int UserID)
+        {
+
+            //يجب تعديل هذه الدالة حتى تصبح باليوز ايدي لانه البوسيجدر يلتقط اسم المستخدم فقط
+            int? resutl = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("SP_CheckUserExists",connection))
+                    {
+
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@UserID", (object)UserID??DBNull.Value);
+
+                        SqlParameter returnValue = new SqlParameter("@ReturnVal", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.ReturnValue
+                        };
+
+                        command.Parameters.Add(returnValue);
+
+                        command.ExecuteNonQuery();
+                         resutl = (int)returnValue.Value;
+                    }
+                }
+            }
+            catch (Exception )
+            {
+
+                throw;
+            }
+
+            return (resutl > 0);
+        }
+
 
         //// public static bool IsUserExistForPersonID(int PersonID)
         // {

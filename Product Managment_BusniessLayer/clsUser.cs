@@ -10,7 +10,7 @@ namespace Product_Managment_BusniessLayer
         enMode _Mode = enMode.AddNew;
 
         public int UserID { get; set; }
-        public string Name { get; set;  }
+        public string Name { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
 
@@ -22,20 +22,20 @@ namespace Product_Managment_BusniessLayer
             this.IsManager = true;
             this.Password = "";
             this.UserName = "";
-            this.Name = ""; 
+            this.Name = "";
             _Mode = enMode.AddNew;
 
         }
 
 
-        private clsUser(int userID,string name,  string userName, string password, bool IsManager)
+        private clsUser(int userID, string name, string userName, string password, bool IsManager)
         {
             _Mode = enMode.Update;
             this.UserID = userID;
             this.UserName = userName;
             this.Password = password;
             this.IsManager = IsManager;
-            this.Name = name; 
+            this.Name = name;
         }
 
 
@@ -80,17 +80,19 @@ namespace Product_Managment_BusniessLayer
             return clsUserData.GetAllUsers();
         }
 
-        public static clsUser FindUserByUserID (int UserID)
+        public static bool IsUserExist(string UserName)
+        { return clsUserData.IsUserExist(UserName); }
+        public static clsUser FindUserByUserID(int? UserID)
         {
             string Name = "";
             string UserName = "";
             string Password = "";
             bool IsManager = false;
 
-            bool IsFound = (clsUserData.GetUserInfoByUserID(UserID,   ref Name, ref UserName, ref Password, ref IsManager));
+            bool IsFound = (clsUserData.GetUserInfoByUserID(UserID ?? -1, ref Name, ref UserName, ref Password, ref IsManager));
             if (IsFound)
             {
-                return new clsUser(UserID, Name, UserName, Password, IsManager);
+                return new clsUser(UserID ?? -1, Name, UserName, Password, IsManager);
             }
             else
             {
@@ -103,10 +105,10 @@ namespace Product_Managment_BusniessLayer
             string Name = "";
             bool IsManager = false;
 
-            bool IsFound = (clsUserData.GetUserInfoByUsernameAndPassword(UserName, Password, ref UserID, ref Name , ref IsManager));
+            bool IsFound = (clsUserData.GetUserInfoByUsernameAndPassword(UserName, Password, ref UserID, ref Name, ref IsManager));
             if (IsFound)
             {
-                return new clsUser(UserID,Name, UserName, Password, IsManager);
+                return new clsUser(UserID, Name, UserName, Password, IsManager);
             }
             else
             {

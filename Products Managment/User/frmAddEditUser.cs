@@ -10,7 +10,7 @@ namespace Products_Managment.User
     public partial class frmAddEditUser : Form
     {
 
-        int _UserID = -1;
+        int ?_UserID  = -1;
 
         enum enMode { AddNew= 0 , Update = 1 };
         private enMode _Mode = enMode.Update; 
@@ -25,8 +25,8 @@ namespace Products_Managment.User
           public frmAddEditUser(int UserID)
         {
             InitializeComponent();
-            _Mode = enMode.Update; 
-            ;
+            _Mode = enMode.Update;
+            _UserID = UserID;
 
         }
 
@@ -64,6 +64,12 @@ namespace Products_Managment.User
         void _LoadUserInfo()
         {
             _User = clsUser.FindUserByUserID(_UserID);
+            if(_User == null)
+            {
+                MessageBox.Show("لم يتم ايجاد المتسخدم المحدد", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return; 
+            }
 
             txtName.Text = _User.Name;
             txtUserName.Text = _User.UserName;
@@ -120,6 +126,15 @@ namespace Products_Managment.User
                 _LoadUserInfo();
         }
 
-        
+        private void txtUserName_Validating(object sender, CancelEventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtUserName.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtUserName, "يجب عليك ملء هذه الخانة");
+
+            }
+            else if(clsUser.)
+        }
     }
 }

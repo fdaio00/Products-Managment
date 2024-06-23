@@ -36,11 +36,11 @@ namespace Products_Managment.Categories
             {
                 nRow = dgvListCategories.CurrentCell.RowIndex;
                 dgvListCategories.Rows[0].Selected = true;
-
+                
 
                 dgvListCategories.Columns[0].HeaderText = "معرف الصنف";
                 dgvListCategories.Columns[1].HeaderText = "وصف الصنف";
-                int CatID = (int)dgvListCategories.Rows[nRow].Cells[0].Value;
+                int CatID = (int)(long)dgvListCategories.Rows[nRow].Cells[0].Value;
 
                 _Category = clsCategory.FindCategoryByCatID(CatID);
                 if (_Category == null)
@@ -59,7 +59,7 @@ namespace Products_Managment.Categories
             {
                 dgvListCategories.Rows[nRow].Selected = false;
                 dgvListCategories.Rows[++nRow].Selected = true;
-                int CatID = (int)dgvListCategories.Rows[nRow].Cells[0].Value;
+                int CatID = (int)(long)dgvListCategories.Rows[nRow].Cells[0].Value;
 
                 _Category = clsCategory.FindCategoryByCatID(CatID);
                 if (_Category == null)
@@ -77,7 +77,7 @@ namespace Products_Managment.Categories
             {
                 dgvListCategories.Rows[nRow].Selected = false;
                 dgvListCategories.Rows[--nRow].Selected = true;
-                int CatID = (int)dgvListCategories.Rows[nRow].Cells[0].Value;
+                int CatID = (int)(long)dgvListCategories.Rows[nRow].Cells[0].Value;
 
                 _Category = clsCategory.FindCategoryByCatID(CatID);
                 if (_Category == null)
@@ -90,7 +90,7 @@ namespace Products_Managment.Categories
         private void dgvListCategories_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             nRow = dgvListCategories.CurrentCell.RowIndex;
-            int CatID = (int)dgvListCategories.Rows[nRow].Cells[0].Value;
+            int CatID = (int)(long)dgvListCategories.Rows[nRow].Cells[0].Value;
 
             _Category = clsCategory.FindCategoryByCatID(CatID);
             if (_Category == null)
@@ -101,7 +101,7 @@ namespace Products_Managment.Categories
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            int CatID = (int)dgvListCategories.Rows[nRow].Cells[0].Value;
+            int CatID = (int)(long)dgvListCategories.Rows[nRow].Cells[0].Value;
             frmAddEditCat frm = new frmAddEditCat(CatID);
             frm.ShowDialog();
             frmListCategories_Load(null, null);
@@ -117,7 +117,7 @@ namespace Products_Managment.Categories
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int CatID = (int)dgvListCategories.Rows[nRow].Cells[0].Value;
+            int CatID = (int)(long)dgvListCategories.Rows[nRow].Cells[0].Value;
 
             if (MessageBox.Show("هل انت متاكد من حذف الصنف المحدد؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
             {
@@ -141,7 +141,7 @@ namespace Products_Managment.Categories
         {
             repPrintCatWithItems myReport = new repPrintCatWithItems();
             frmPrintCategoryWithItmes frm = new frmPrintCategoryWithItmes();
-            myReport.SetParameterValue("@ID", (int)dgvListCategories.Rows[nRow].Cells[0].Value);
+            myReport.SetParameterValue("@ID", (int)(long)dgvListCategories.Rows[nRow].Cells[0].Value);
             frm.crystalReportViewer1.ReportSource = myReport;
             frm.ShowDialog(); 
         }

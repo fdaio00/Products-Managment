@@ -206,7 +206,7 @@ public static class clsCategoryData
                 {
                     // The record was found
                     isFound = true;
-                    CatID = (int)reader["CatID"];
+                    CatID = (int)(long)(long)(reader["CatID"]);
                 }
                 else
                 {
@@ -230,4 +230,7 @@ public static class clsCategoryData
 
         return isFound;
     }
-}
+
+
+    }
+

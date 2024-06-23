@@ -5,8 +5,8 @@ namespace Products_Managment_DataAccessLayer
 {
     public static class clsDataAccessSettings
     {
-        static public string ConnectionString = "Server=.;Database=ProductsDB; User Id =sa; Password=123;Trusted_Connection=True;TrustServerCertificate=true;";
-
+        //     static public string ConnectionString = "Server=.;Database=ProductsDB; User Id =sa; Password=123;Trusted_Connection=True;TrustServerCertificate=true;";
+        static public string ConnectionString = "Data Source=C:\\Users\\feda'a\\Desktop\\Products Managment\\Products Managment_DataAccessLayer\\ProductsDB.db;Version=3;";
 
         public static bool RestoreDatabase(string backupFilePath)
         {

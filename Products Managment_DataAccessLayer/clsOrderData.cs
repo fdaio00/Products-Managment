@@ -25,8 +25,8 @@ namespace Products_Managment_DataAccessLayer
                         isFound = true;
                         OrderDate = (DateTime)reader["OrderDate"];
                         OrderDescription = (string)reader["OrderDescription"];
-                        CustomerID = (int)reader["CustomerID"];
-                        CreatedByUserID = (int)reader["CreatedByUserID"];
+                        CustomerID = (int)(long)reader["CustomerID"];
+                        CreatedByUserID = (int)(long)reader["CreatedByUserID"];
                     }
                     reader.Close();
                 }

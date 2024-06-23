@@ -57,7 +57,7 @@ namespace Products_Managment.Customers
         private void dgvListCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             nRow = dgvListCustomers.CurrentCell.RowIndex;
-            int CustomerID = (int)dgvListCustomers.CurrentRow.Cells[0].Value;
+            int CustomerID = (int)(long)dgvListCustomers.CurrentRow.Cells[0].Value;
             _Customer = clsCustomer.FindCustomerByCustomerID(CustomerID);
             if (_Customer == null)
                 return;
@@ -152,7 +152,7 @@ namespace Products_Managment.Customers
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int CustomerID = (int)dgvListCustomers.CurrentRow.Cells[0].Value;
+            int CustomerID = (int)(long)dgvListCustomers.CurrentRow.Cells[0].Value;
 
             if (clsCustomer.DeleteByCustomerID(CustomerID))
             {

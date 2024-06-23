@@ -26,13 +26,13 @@ namespace Products_Managment.Order
 
         private void frmSelectProduct_Load(object sender, EventArgs e)
         {
-            _dtAllProducts = clsProduct.GetValidProducts();
-            dgvListProducts.DataSource = _dtAllProducts;
+            //_dtAllProducts = clsProduct.GetValidProducts();
+            //dgvListProducts.DataSource = _dtAllProducts;
         }
 
         private void dgvListProducts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int ProductID = (int)dgvListProducts.CurrentRow.Cells[0].Value;
+            int ProductID = (int)(long)dgvListProducts.CurrentRow.Cells[0].Value;
 
             SendProductIDBack?.Invoke(this, ProductID);
             this.Close();

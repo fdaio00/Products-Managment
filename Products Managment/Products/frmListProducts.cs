@@ -97,7 +97,7 @@ namespace Products_Managment
 
         private void btnEditProduct_Click(object sender, EventArgs e)
         {
-            int ProductID = (int)dgvListProducts.CurrentRow.Cells[0].Value;
+            int ProductID = (int)(long)dgvListProducts.CurrentRow.Cells[0].Value;
 
             frmAddEditProduct frm = new frmAddEditProduct(ProductID);
             frm.ShowDialog();
@@ -107,7 +107,7 @@ namespace Products_Managment
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
 
-            int ProductID = (int)dgvListProducts.CurrentRow.Cells[0].Value;
+            int ProductID = (int)(long)dgvListProducts.CurrentRow.Cells[0].Value;
             if (MessageBox.Show("هل انت متاكد من حذف المنتج المحدد؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
             {
                 if (clsProduct.DeleteProduct(ProductID))
@@ -128,7 +128,7 @@ namespace Products_Managment
         {
             repPrintSelectedProduct MyRepoert = new repPrintSelectedProduct();
             frmPrintSelecteProduct frm = new frmPrintSelecteProduct();
-            MyRepoert.SetParameterValue("@ProductID", (int)dgvListProducts.CurrentRow.Cells[0].Value);
+            MyRepoert.SetParameterValue("@ProductID", (int)(long)dgvListProducts.CurrentRow.Cells[0].Value);
             frm.crystalReportViewer1.ReportSource = MyRepoert;
             frm.ShowDialog();
         }

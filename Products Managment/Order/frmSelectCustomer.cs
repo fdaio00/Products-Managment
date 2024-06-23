@@ -55,7 +55,7 @@ namespace Products_Managment.Order
      
         private void dgvListCustomers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int CustomerID = (int)dgvListCustomers.CurrentRow.Cells[0].Value;
+            int CustomerID = (int)(long)dgvListCustomers.CurrentRow.Cells[0].Value;
 
             SendCustomerBack?.Invoke(this, CustomerID);
             this.Close();

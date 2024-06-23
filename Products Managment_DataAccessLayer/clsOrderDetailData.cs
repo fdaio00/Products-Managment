@@ -32,13 +32,13 @@ namespace Products_Managment_DataAccessLayer
                     dt.Load(reader);
                     // The record was found
                     //isFound = true;
-                    //OrderDetailsID = (int)reader["OrderDetailsID"];
-                    //ProductID = (int)reader["ProductID"];
-                    //Quantity = (int)reader["Quantity"];
+                    //OrderDetailsID = (int)(long)reader["OrderDetailsID"];
+                    //ProductID = (int)(long)reader["ProductID"];
+                    //Quantity = (int)(long)reader["Quantity"];
                     //Price = (float)reader["Price"];
                     //Discount = (float)reader["Discount"];
-                    //Sum = (int)reader["Sum"];
-                    //Total = (int)reader["Total"];
+                    //Sum = (int)(long)reader["Sum"];
+                    //Total = (int)(long)reader["Total"];
                 }
                 else
                 {
@@ -87,13 +87,13 @@ namespace Products_Managment_DataAccessLayer
                     dt.Load(reader);
                     // The record was found
                     //isFound = true;
-                    //OrderDetailsID = (int)reader["OrderDetailsID"];
-                    //ProductID = (int)reader["ProductID"];
-                    //Quantity = (int)reader["Quantity"];
+                    //OrderDetailsID = (int)(long)reader["OrderDetailsID"];
+                    //ProductID = (int)(long)reader["ProductID"];
+                    //Quantity = (int)(long)reader["Quantity"];
                     //Price = (float)reader["Price"];
                     //Discount = (float)reader["Discount"];
-                    //Sum = (int)reader["Sum"];
-                    //Total = (int)reader["Total"];
+                    //Sum = (int)(long)reader["Sum"];
+                    //Total = (int)(long)reader["Total"];
                 }
                 else
                 {
@@ -140,13 +140,13 @@ namespace Products_Managment_DataAccessLayer
                     dt.Load(reader);
                     // The record was found
                     //isFound = true;
-                    //OrderDetailsID = (int)reader["OrderDetailsID"];
-                    //ProductID = (int)reader["ProductID"];
-                    //Quantity = (int)reader["Quantity"];
+                    //OrderDetailsID = (int)(long)reader["OrderDetailsID"];
+                    //ProductID = (int)(long)reader["ProductID"];
+                    //Quantity = (int)(long)reader["Quantity"];
                     //Price = (float)reader["Price"];
                     //Discount = (float)reader["Discount"];
-                    //Sum = (int)reader["Sum"];
-                    //Total = (int)reader["Total"];
+                    //Sum = (int)(long)reader["Sum"];
+                    //Total = (int)(long)reader["Total"];
                 }
                 else
                 {
@@ -206,7 +206,7 @@ namespace Products_Managment_DataAccessLayer
 
                 if (NewOrderDetailsID.Value!=null)
                 {
-                    OrderDetailsID = (int)NewOrderDetailsID.Value;
+                    OrderDetailsID = (int)(long)NewOrderDetailsID.Value;
                 }
             }
             catch (Exception ex)

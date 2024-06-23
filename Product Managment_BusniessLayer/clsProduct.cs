@@ -94,10 +94,10 @@ namespace Product_Managment_BusniessLayer
         //}
 
 
-        public static DataTable GetValidProducts()
-        {
-            return clsProductData.GetValidProducts(); 
-        }
+        //public static DataTable GetValidProducts()
+        //{
+        //    return clsProductData.GetValidProducts(); 
+        //}
         public static clsProduct FindProductByID(int ProductID)
         {
             string ProductName = "";

@@ -1,8 +1,7 @@
 ﻿using Products_Managment_DataAccessLayer;
 using System;
 using System.Data;
-using System.Data.SqlClient;
-
+using System.Data.SQLite;
 
 public static class clsCategoryData
 {
@@ -10,20 +9,19 @@ public static class clsCategoryData
     {
         DataTable dt = new DataTable();
 
-        using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+        using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
         {
             string query = "SELECT * FROM Categories";
 
-            SqlCommand command = new SqlCommand(query, connection);
+            SQLiteCommand command = new SQLiteCommand(query, connection);
 
             try
             {
                 connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = command.ExecuteReader();
                 if (reader.HasRows)
                 {
                     dt.Load(reader);
-
                 }
             }
             catch (Exception ex)
@@ -32,12 +30,10 @@ public static class clsCategoryData
                 Console.WriteLine("Error: " + ex.Message);
             }
             finally
-
             {
                 connection.Close();
             }
         }
-
 
         return dt;
     }
@@ -46,11 +42,11 @@ public static class clsCategoryData
     {
         int catID = -1;
 
-        using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+        using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
         {
-            string query = "INSERT INTO Categories (CatDescription) VALUES (@CatDescription); SELECT SCOPE_IDENTITY();";
+            string query = "INSERT INTO Categories (CatDescription) VALUES (@CatDescription); SELECT last_insert_rowid();";
 
-            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SQLiteCommand command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@CatDescription", catDescription);
 
@@ -69,7 +65,6 @@ public static class clsCategoryData
                     Console.WriteLine("Error: " + ex.Message);
                 }
                 finally
-
                 {
                     connection.Close();
                 }
@@ -83,11 +78,11 @@ public static class clsCategoryData
     {
         bool success = false;
 
-        using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+        using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
         {
             string query = "UPDATE Categories SET CatDescription = @CatDescription WHERE CatID = @CatID";
 
-            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SQLiteCommand command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@CatDescription", catDescription);
                 command.Parameters.AddWithValue("@CatID", catID);
@@ -104,7 +99,6 @@ public static class clsCategoryData
                     Console.WriteLine("Error: " + ex.Message);
                 }
                 finally
-
                 {
                     connection.Close();
                 }
@@ -118,11 +112,11 @@ public static class clsCategoryData
     {
         bool success = false;
 
-        using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+        using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
         {
             string query = "DELETE FROM Categories WHERE CatID = @CatID";
 
-            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SQLiteCommand command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@CatID", catID);
 
@@ -138,7 +132,6 @@ public static class clsCategoryData
                     Console.WriteLine("Error: " + ex.Message);
                 }
                 finally
-
                 {
                     connection.Close();
                 }
@@ -152,89 +145,89 @@ public static class clsCategoryData
     {
         bool isFound = false;
 
-        SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-        string query = "select * from Categories where CatID=@CatID";
-
-        SqlCommand command = new SqlCommand(query, connection);
-        command.Parameters.AddWithValue("@CatID", CatID);
-
-
-        try
+        using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
         {
-            connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
+            string query = "SELECT * FROM Categories WHERE CatID = @CatID";
 
-            if (reader.Read())
+            SQLiteCommand command = new SQLiteCommand(query, connection);
+            command.Parameters.AddWithValue("@CatID", CatID);
+
+            try
             {
-                // The record was found
-                isFound = true;
-                catDescription = (string)reader["CatDescription"];
+                connection.Open();
+                SQLiteDataReader reader = command.ExecuteReader();
 
+                if (reader.Read())
+                {
+                    // The record was found
+                    isFound = true;
+                    catDescription = (string)reader["CatDescription"];
+                }
+                else
+                {
+                    // The record was not found
+                    isFound = false;
+                }
+
+                reader.Close();
             }
-            else
+            catch (Exception ex)
             {
-                // The record was not found
+                // Handle exception
+                Console.WriteLine("Error: " + ex.Message);
                 isFound = false;
             }
-
-            reader.Close();
-        }
-        catch (Exception ex)
-        {
-            //Console.WriteLine("Error: " + ex.Message);
-            isFound = false;
-        }
-        finally
-        {
-            connection.Close();
+            finally
+            {
+                connection.Close();
+            }
         }
 
         return isFound;
     }
+
     public static bool FindCategoryByCatName(ref int CatID, string CatDescription)
     {
         bool isFound = false;
 
-        SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-        string query = "select * from Categories where CatDescription=@CatDescription";
-
-        SqlCommand command = new SqlCommand(query, connection);
-        command.Parameters.AddWithValue("@CatDescription", CatDescription);
-
-
-        try
+        using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
         {
-            connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
+            string query = "SELECT * FROM Categories WHERE CatDescription = @CatDescription";
 
-            if (reader.Read())
+            SQLiteCommand command = new SQLiteCommand(query, connection);
+            command.Parameters.AddWithValue("@CatDescription", CatDescription);
+
+            try
             {
-                // The record was found
-                isFound = true;
-                CatID = (int)reader["CatID"];
+                connection.Open();
+                SQLiteDataReader reader = command.ExecuteReader();
 
+                if (reader.Read())
+                {
+                    // The record was found
+                    isFound = true;
+                    CatID = (int)reader["CatID"];
+                }
+                else
+                {
+                    // The record was not found
+                    isFound = false;
+                }
+
+                reader.Close();
             }
-            else
+            catch (Exception ex)
             {
-                // The record was not found
+                // Handle exception
+                Console.WriteLine("Error: " + ex.Message);
                 isFound = false;
             }
-
-            reader.Close();
-        }
-        catch (Exception ex)
-        {
-            //Console.WriteLine("Error: " + ex.Message);
-            isFound = false;
-        }
-        finally
-        {
-            connection.Close();
+            finally
+            {
+                connection.Close();
+            }
         }
 
         return isFound;
     }
-
 }

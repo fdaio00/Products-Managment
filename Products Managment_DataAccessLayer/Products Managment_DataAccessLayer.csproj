@@ -80,7 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsCategoryData.cs" />
-    <Compile Include="clsCustomersData.cs" />
+    <Compile Include="clsCustomerData.cs" />
     <Compile Include="clsDataAccessSettings.cs" />
     <Compile Include="clsOrderData.cs" />
     <Compile Include="clsOrderDetailData.cs" />

@@ -142,7 +142,7 @@ namespace Products_Managment
 
         private void lklRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            pbProductImage.Image = null;
+            pbProductImage.ImageLocation = null;
             lklRemoveImage.Visible = false;
         }
 
@@ -178,13 +178,14 @@ namespace Products_Managment
                 }
 
                 else
-                {
-                    return false;
-                }
-            }
+                    MessageBox.Show("Error Copying Image File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                return false;
+            }
             return true;
         }
+
+        
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!this.ValidateChildren())

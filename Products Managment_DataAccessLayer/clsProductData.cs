@@ -30,7 +30,7 @@ namespace Products_Managment_DataAccessLayer
                                 ProductName = reader["ProductName"].ToString();
                                 Quantity = Convert.ToInt32(reader["Quantity"]);
                                 Price = Convert.ToDecimal(reader["Price"]);
-                                ImageProduct = reader["ImageProduct"] != DBNull.Value ? reader["ImageProduct"].ToString() : null;
+                                ImageProduct = reader["ImageProduct"] != DBNull.Value ? reader["ImageProduct"].ToString() : "";
                                 CatID = Convert.ToInt32(reader["CatID"]);
                             }
                             else

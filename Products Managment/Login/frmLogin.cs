@@ -1,4 +1,5 @@
 ﻿using Product_Managment_BusniessLayer;
+using Products_Managment.GlobalClasses;
 using System;
 using System.Windows.Forms;
 
@@ -40,7 +41,9 @@ namespace Products_Managment
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            clsUser LoggedUser = clsUser.FindUserByUserNameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+            
+            //clsUser LoggedUser = clsUser.FindUserByUserNameAndPassword(txtUserName.Text.Trim(), clsUtil.Encrypt(txtPassword.Text.Trim()));
+            clsUser LoggedUser = clsUser.FindUserByUserNameAndPassword(txtUserName.Text.Trim(), (txtPassword.Text.Trim()));
 
             if (LoggedUser != null)
             {

@@ -67,28 +67,28 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtUserName.Location = new System.Drawing.Point(140, 26);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(226, 22);
+            this.txtUserName.Size = new System.Drawing.Size(226, 24);
             this.txtUserName.TabIndex = 1;
             this.txtUserName.Validating += new System.ComponentModel.CancelEventHandler(this.txtUserName_Validating);
             // 
             // txtPassword
             // 
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtPassword.Location = new System.Drawing.Point(140, 114);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(226, 22);
+            this.txtPassword.Size = new System.Drawing.Size(226, 24);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
             // txtName
             // 
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtName.Location = new System.Drawing.Point(140, 70);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(226, 22);
+            this.txtName.Size = new System.Drawing.Size(226, 24);
             this.txtName.TabIndex = 0;
             this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Validating);
             // 
@@ -138,10 +138,10 @@
             // 
             // txtConfitmPassword
             // 
-            this.txtConfitmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.txtConfitmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtConfitmPassword.Location = new System.Drawing.Point(140, 161);
             this.txtConfitmPassword.Name = "txtConfitmPassword";
-            this.txtConfitmPassword.Size = new System.Drawing.Size(226, 22);
+            this.txtConfitmPassword.Size = new System.Drawing.Size(226, 24);
             this.txtConfitmPassword.TabIndex = 3;
             // 
             // label4
@@ -167,14 +167,14 @@
             // cbIsManager
             // 
             this.cbIsManager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbIsManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.cbIsManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cbIsManager.FormattingEnabled = true;
             this.cbIsManager.Items.AddRange(new object[] {
             "عادي",
             "مدير"});
             this.cbIsManager.Location = new System.Drawing.Point(139, 202);
             this.cbIsManager.Name = "cbIsManager";
-            this.cbIsManager.Size = new System.Drawing.Size(227, 24);
+            this.cbIsManager.Size = new System.Drawing.Size(227, 26);
             this.cbIsManager.TabIndex = 4;
             // 
             // frmAddEditUser

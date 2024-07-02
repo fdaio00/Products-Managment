@@ -1,5 +1,6 @@
 ﻿using Product_Managment_BusniessLayer;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
@@ -79,6 +80,21 @@ namespace Products_Managment
                 MessageBox.Show(ex.Message);
                 return false;
             }
+        }
+
+        static public void SetErrorLoggingEvent(string exMessage)
+        {
+            string sourceName = "Products Managment System";
+
+            if (!EventLog.SourceExists(sourceName))
+            {
+                EventLog.CreateEventSource(sourceName, "Application");
+
+            }
+
+
+            EventLog.WriteEntry(sourceName, exMessage, EventLogEntryType.Error);
+
         }
     }
 }
